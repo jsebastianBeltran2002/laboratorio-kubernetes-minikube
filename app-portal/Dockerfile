@@ -18,7 +18,7 @@ FROM nginx:1.29-alpine
 # LABEL: metadatos de la imagen. No cambian el comportamiento, pero permiten
 # saber quien construyo la imagen y para que. Se consultan con "docker inspect".
 LABEL org.opencontainers.image.title="Portal del laboratorio de Kubernetes" \
-      autor="CAMBIE ESTO POR SU NOMBRE" \
+      autor="Johan Beltran" \
       curso="Cloud Computing y DevOps"
 
 # COPY: cada instruccion COPY crea una capa nueva de solo lectura. Por eso se

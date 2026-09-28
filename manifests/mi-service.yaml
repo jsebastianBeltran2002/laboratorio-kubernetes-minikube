@@ -1,0 +1,24 @@
+# ---------------------------------------------------------------------------
+# Service de tipo NodePort.
+#
+#   puerto 30081 del nodo  ->  puerto 80 del Service  ->  puerto 80 del Pod
+#
+# El Service encuentra sus Pods por etiqueta (selector), no por nombre ni por
+# IP: por eso sigue funcionando cuando los Pods se reemplazan.
+# ---------------------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: portal
+  namespace: portal
+  labels:
+    app: portal
+spec:
+  type: NodePort
+  selector:
+    app: portal
+  ports:
+    - name: http
+      port: 80          # puerto del Service dentro del clúster
+      targetPort: 80    # puerto del contenedor
+      nodePort: 30081   # puerto publicado en el nodo (rango 30000-32767)
